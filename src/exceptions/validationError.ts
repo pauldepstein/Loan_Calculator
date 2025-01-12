@@ -13,9 +13,9 @@ export class ValidationError extends Error {
      * Creates an instance of ValidationError.
      * 
      * @param message - The error message.
-     * @param logging - A boolean flag indicating whether the error should be logged. Defaults to `true`.
+     * @param logging - A boolean flag indicating whether the error should be logged. Defaults to `false`.
      */
-    constructor(message: string, logging: boolean = true) {
+    constructor(message: string, logging: boolean = false) {
       super(message);  
       this.name = this.constructor.name;
       this.logging = logging;

@@ -3,7 +3,7 @@
  * 
  * This class provides an error with conditional logging to the console.
  */
-class ValidationError extends Error {
+export class ValidationError extends Error {
     /**
      * A flag that determines whether the error should be logged.
      */

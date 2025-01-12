@@ -13,7 +13,7 @@ export class ValidationError extends Error {
      * Creates an instance of ValidationError.
      * 
      * @param message - The error message.
-     * @param logging - A boolean flag indicating whether the error should be logged. Defaults to `false`.
+     * @param logging [logging=false] - A boolean flag indicating whether the error should be logged.
      */
     constructor(message: string, logging: boolean = false) {
       super(message);  

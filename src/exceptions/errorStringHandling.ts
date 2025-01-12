@@ -4,8 +4,9 @@
  * @param {string} errorMessage -- the error message for the parameter
  * @returns {string} -- the final error message
  */
-export function displayError(errorParam: string, errorMessage: string): string {
+function displayError(errorParam: string, errorMessage: string): string {
     const ERROR_INDICATOR = "Error: ";
     const errorString = `${ERROR_INDICATOR}${errorParam}: \n${errorMessage}`;
     return errorString;
 }
+module.exports.displayError = displayError;

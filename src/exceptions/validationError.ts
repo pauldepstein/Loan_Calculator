@@ -3,7 +3,7 @@
  * 
  * This class provides an error with conditional logging to the console.
  */
-export class ValidationError extends Error {
+class ValidationError extends Error {
     /**
      * A flag that determines whether the error should be logged.
      */
@@ -17,7 +17,7 @@ export class ValidationError extends Error {
      */
     constructor(message: string, logging: boolean = false) {
       super(message);  
-      this.name = this.constructor.name;
+      this.name = "ValidationError";
       this.logging = logging;
   
     // Log to console if not using a browser
@@ -36,6 +36,6 @@ export class ValidationError extends Error {
       return `${this.name}: ${this.message}`;
     }
   }
-  
+  module.exports.ValidationError = ValidationError;
 
   

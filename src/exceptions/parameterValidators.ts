@@ -10,9 +10,12 @@
  * @date 2025-01-12
  */
 
-import { ERROR_MESSAGES } from "./errorMessages";
-import { ValidationError } from "./validationError";
-import { displayError } from "./errorStringHandling";
+const errorMessageHandling = require("./errorMessages");
+const validationHandling = require("./validationError");
+const errorHandling = require("./errorStringHandling");
+
+let errors = errorMessageHandling.errorMessages;    
+
 
 /**
  * Validates an interest rate.
@@ -35,14 +38,13 @@ function validateInterestRate(rate: number, logging: boolean = false, allowZero:
 
     const isZeroCase = rate === 0 && !allowZero;
     const errorMessage = isZeroCase 
-        ? ERROR_MESSAGES.UNEXPECTED_NON_POSITIVE 
-        : ERROR_MESSAGES.UNEXPECTED_NEGATIVE;
+        ? errors.UNEXPECTED_NON_POSITIVE 
+        : errors.UNEXPECTED_NEGATIVE;
 
-    const displayMessage = displayError(PARAM_NAME, errorMessage);
+    const displayMessage = errorHandling.displayError(PARAM_NAME, errorMessage);
 
     if (rate < 0 || isZeroCase) {
-        throw new ValidationError(displayMessage, logging);
+        throw new validationHandling.ValidationError(displayMessage, logging);
     }
 }
-
-export { validateInterestRate };
+module.exports.validateInterestRate = validateInterestRate;

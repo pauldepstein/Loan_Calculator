@@ -2,21 +2,21 @@
 const validateParameterHandling = require('../../exceptions/parameterValidators');
 const ValidationErrorHandling = require('../../exceptions/validationError');
 
-let validateInterest = validateParameterHandling.validateInterestRate;
-let validatePeriods = validateParameterHandling.validateNumPeriods;
-let validateSum = validateParameterHandling.validateAmount;  
-let validateError = ValidationErrorHandling.ValidationError;
+const validateInterestRateTest = validateParameterHandling.validateInterestRate;
+const validateNumPeriodsTest = validateParameterHandling.validateNumPeriods;
+const validateAmountTest = validateParameterHandling.validateAmount;  
+const ValidationErrorTest = ValidationErrorHandling.ValidationError;
 
 // Interest rate tests
 try {
   console.log('Testing valid interest rate:');
-  validateInterest(5);
+  validateInterestRateTest(5);
   console.log('Valid rate passed successfully!');
 
   console.log('Testing negative interest rate:');
-  validateInterest(-1);
+  validateInterestRateTest(-1);
 } catch (error: any) {
-  if (error instanceof validateError) {
+  if (error instanceof ValidationErrorTest) {
     console.log(`Caught expected error: ${error.message}`);
   } else {
     console.log(`Unexpected error: ${error}`);
@@ -26,9 +26,9 @@ try {
 
 try {
   console.log('Testing zero interest rate (not allowed):');
-  validateInterest(0, false, false);
+  validateInterestRateTest(0, false, false);
 } catch (error: any) {
-  if (error instanceof validateError) {
+  if (error instanceof ValidationErrorTest) {
     console.log(`Caught expected error: ${error.message}`);
   } else {
     console.log(`Unexpected error: ${error}`);
@@ -37,7 +37,7 @@ try {
 
 try {
   console.log('Testing zero interest rate (allowed):');
-  validateInterest(0, false, true);
+  validateInterestRateTest(0, true, false);
   console.log('Zero interest rate passed!');
 } catch (error) {
   console.log(`Unexpected error: ${error}`);
@@ -46,13 +46,13 @@ try {
 // Number of periods tests
 try {
   console.log('Testing valid number of periods:');
-  validatePeriods(5);
+  validateNumPeriodsTest(5);
   console.log('Valid number of periods passed successfully!');
 
   console.log('Testing negative number of periods:');
-  validatePeriods(-1);
+  validateNumPeriodsTest(-1);
 } catch (error: any) {
-  if (error instanceof validateError) {
+  if (error instanceof ValidationErrorTest) {
     console.log(`Caught expected error: ${error.message}`);
   } else {
     console.log(`Unexpected error: ${error}`);
@@ -62,9 +62,9 @@ try {
 
 try {
   console.log('Testing fractional number of periods:');
-  validatePeriods(2.5);
+  validateNumPeriodsTest(2.5);
 } catch (error: any) {
-  if (error instanceof validateError) {
+  if (error instanceof ValidationErrorTest) {
     console.log(`Caught expected error: ${error.message}`);
   } else {
     console.log(`Unexpected error: ${error}`);
@@ -74,13 +74,13 @@ try {
 // Amount tests
 try {
   console.log('Testing that amount is positive:');
-  validateSum(5.5);
+  validateAmountTest(5.5);
   console.log('Valid amount passed successfully!');
 
   console.log('Testing zero money:');
-  validateSum(0);
+  validateAmountTest(0);
 } catch (error: any) {
-  if (error instanceof validateError) {
+  if (error instanceof ValidationErrorTest) {
     console.log(`Caught expected error: ${error.message}`);
   } else {
     console.log(`Unexpected error: ${error}`);
@@ -90,9 +90,9 @@ try {
 
 try {
   console.log('Testing for negative sums:');
-  validateSum(-2.5);
+  validateAmountTest(-2.5);
 } catch (error: any) {
-  if (error instanceof validateError) {
+  if (error instanceof ValidationErrorTest) {
     console.log(`Caught expected error: ${error.message}`);
   } else {
     console.log(`Unexpected error: ${error}`);

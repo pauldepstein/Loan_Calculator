@@ -25,9 +25,8 @@ let validationFailure = validationHandling.ValidationError;
  * but can be disallowed via a parameter.
  * 
  * @param {number} rate - The interest rate to validate.
+ * @param {boolean} [allowZero=true] - Whether zero interest rates are allowed.
  * @param {boolean} [logging=false] - Whether the error should be logged.
- * @param {boolean} [allowZero=true] - True if zero interest rates are allowed.
- * 
  * @throws {ValidationError} If the interest rate is negative or zero when disallowed.
  * 
  * @example
@@ -35,9 +34,8 @@ let validationFailure = validationHandling.ValidationError;
  * validateInterestRate(-1); // Throws ValidationError
  * validateInterestRate(0, false, false); // Throws ValidationError
  */
-function validateInterestRate(rate: number, logging: boolean = false, allowZero: boolean = true): void {
+function validateInterestRate(rate: number, allowZero: boolean = true, logging: boolean = false): void {
     const PARAM_NAME = "interest rate";
-
     const isZeroCase = rate === 0 && !allowZero;
     const errorMessage = isZeroCase 
         ? errors.UNEXPECTED_NON_POSITIVE 

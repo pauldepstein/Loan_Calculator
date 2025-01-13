@@ -2,24 +2,21 @@
  * A utility function to validate the parameters of the loanPayments function.
  * @param {number} rate - The monthly interest rate.
  * @param {number} amount - The loan amount.
- * @param {number} numberOfPayments - The number of payments.
+ * @param {number} periods - The number of payments.
  * @param {boolean} [allowZero=true] - True if zero interest rates are allowed.
  * @param {boolean} [logging=false] - Whether the error should be logged.
  * @throws {ValidationError} - If any of the parameters are invalid.
  */
 
 const paramValidatorsPath = '../../../exceptions/parameterValidators';
-const validateInterestRateHandling = require(paramValidatorsPath).validateInterestRate;
 const validateAmountHandling = require(paramValidatorsPath).validateAmount;
-const validateNumPeriodsHandling = require(paramValidatorsPath).validateNumPeriods;
+// Validate the parameters needed for the ratePerPeriod function
+const validateParamsHandling = require('./ratePerPeriod').validateParams;
 
-
-function validateParams(rate: number, amount: number, numberOfPayments: number, allowZero: boolean = true, logging: boolean = false): void{
-    validateInterestRateHandling(rate, allowZero, logging);
+function validateLoanParams(rate: number, amount: number, periods: number,  allowZero: boolean = true, logging: boolean = false): void{
+    validateParamsHandling(rate, periods, allowZero, logging);
     validateAmountHandling(amount, logging);
-    validateNumPeriodsHandling(numberOfPayments, logging);   
 }
-module.exports.validateParams = validateParams;
 
 /**
  * Calculates the monthly payment for a loan in the simplest case.
@@ -31,7 +28,7 @@ module.exports.validateParams = validateParams;
  * 
  * @param {number} rate - The monthly interest rate.
  * @param {number} amount - The loan amount.
- * @param {number} numberOfPayments - The number of payments.
+ * @param {number} periods - The number of payments.
  * @param {boolean} [allowZero=true] - True if zero interest rates are allowed.
  * @returns {number} The monthly payment.
  * 
@@ -46,11 +43,11 @@ module.exports.validateParams = validateParams;
  * to compare with third-party results
  */
 
-function loanPayments(rate: number, amount: number, numberOfPayments: number, allowZero: boolean = true): number{
+function loanPayments(rate: number, amount: number, periods: number, allowZero: boolean = true): number{
     // Validate the parameters
-    validateParams(rate, amount, numberOfPayments, allowZero);
+    validateLoanParams(rate, amount, periods, allowZero);
     // Calculate the monthly payment using standard formula as adjusted in case the rate is zero
-    const result = rate > 0 ? rate * amount / (1 - Math.pow(1 + rate, -numberOfPayments)) : amount / numberOfPayments;
+    const result = rate > 0 ? rate * amount / (1 - (1 + rate) ** -periods) : amount / periods;
     // Return the result, rounded to two decimal places
     return parseFloat(result.toFixed(2));
 }

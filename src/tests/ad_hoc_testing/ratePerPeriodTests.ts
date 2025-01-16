@@ -1,6 +1,8 @@
 // Purpose: ad hoc testing for the rate conversion function.
 const successMsg = 'The test passed successfully!';
 const failureMsg = 'The test failed!';
+
+// Dependencies
 const ratesPerPeriodTest = require('../../computations/financial_computations/interest_computations/ratePerPeriod').ratesPerPeriod; 
 const ValidationFailure = require('../../exceptions/validationError').ValidationError;
 

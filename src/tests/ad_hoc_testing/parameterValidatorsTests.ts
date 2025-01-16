@@ -1,4 +1,6 @@
 // Purpose: ad hoc testing of the parameter validation functions in the exceptions folder.
+
+// Dependencies
 const validateParameterHandling = require('../../exceptions/parameterValidators');
 const ValidationErrorHandling = require('../../exceptions/validationError');
 

@@ -6,20 +6,15 @@
  * and the number of periods should be integral and positive.
  *
  * @author Paul Epstein
- * @version 1.0.0
- * @date 2025-01-12
+ * @version 1.0
+ * @date 2025-01-18
  */
 
 // Dependencies
-const errorMessageHandling = require("./errorMessages");
-const validationHandling = require("./validationError");
-const errorHandling = require("./errorStringHandling");
+/// <reference path="errorStringHandling.ts" />
+/// <reference path="validationError.ts" />
 
-let errors = errorMessageHandling.errorMessages;    
-let display = errorHandling.displayError;
-let validationFailure = validationHandling.ValidationError;
-
-
+namespace ParameterValidators {
 /**
  * Validates an interest rate.
  * Negative interest rates are not allowed. Zero interest rates are allowed by default 
@@ -35,20 +30,19 @@ let validationFailure = validationHandling.ValidationError;
  * validateInterestRate(-1); // Throws ValidationError
  * validateInterestRate(0, false, false); // Throws ValidationError
  */
-function validateInterestRate(rate: number, allowZero: boolean = true, logging: boolean = false): void {
+export function validateInterestRate(rate: number, allowZero: boolean = true, logging: boolean = false): void {
     const PARAM_NAME = "interest rate";
     const isZeroCase = rate === 0 && !allowZero;
     const errorMessage = isZeroCase 
-        ? errors.UNEXPECTED_NON_POSITIVE 
-        : errors.UNEXPECTED_NEGATIVE;
+        ? ERROR_MESSAGES.ERROR_MESSAGES.UNEXPECTED_NON_POSITIVE
+        : ERROR_MESSAGES.ERROR_MESSAGES.UNEXPECTED_NEGATIVE;
 
-    const displayMessage = display(PARAM_NAME, errorMessage);
+    const displayMessage = ErrorStringHandling.displayError(PARAM_NAME, errorMessage);
 
     if (rate < 0 || isZeroCase) {
-        throw new validationFailure(displayMessage, logging);
+        throw new ValidateError.ValidationError(displayMessage, logging);
     }
 }
-module.exports.validateInterestRate = validateInterestRate;
 
 /**
  * Small utility function to flag numbers which are not positive.
@@ -57,18 +51,20 @@ module.exports.validateInterestRate = validateInterestRate;
  * @param {boolean} [logging=false] - Whether the error should be logged.
  * @throws {ValidationError} - Error message for the parameter.
  */
-function negativeError(paramName: string, posAmount: number, logging: boolean = false): void {
+export function negativeError(paramName: string, posAmount: number, logging: boolean = false): void {
     if (posAmount <= 0) {
-        const ERROR_MESSAGE = display(paramName, errors.UNEXPECTED_NON_POSITIVE);
-        throw new validationFailure(ERROR_MESSAGE, logging);
+        const ERROR_MESSAGE = ErrorStringHandling.displayError(paramName, ERROR_MESSAGES.ERROR_MESSAGES.UNEXPECTED_NON_POSITIVE);
+        throw new ValidateError.ValidationError(ERROR_MESSAGE, logging);
     }
 }
 
 /**
  * Validates a number of periods -- commonly used in interest computations
  * The number of periods must be an integer >= 1.
+ * Also validates the number of periods in a year (typically 12 for monthly payments).
  * 
- * @param {number} periods - Validate the number of periods.
+ * @param {number} periods - The number of periods or the number of periods-per-year
+ * @param {boolean} [isPeriodsPerYear=false] - True if the number of periods in a year is being validated
  * @param {boolean} [logging=false] - Whether the error should be logged.
  * 
  * @throws {ValidationError} - Error if periods is non-positive or fractional.
@@ -76,19 +72,23 @@ function negativeError(paramName: string, posAmount: number, logging: boolean = 
  * @example
  * validateNumPeriods(5); // Valid
  * validateNumPeriods(0); // Throws ValidationError
+ * validateNumPeriods(-1); // Throws ValidationError
  * validateNumPeriods(2.5); // Throws ValidationError
  */
-function validateNumPeriods(periods: number, logging: boolean = false): void {
-    const PARAM_NAME = "number of periods";
-    const fractionErrorMessage = errors.UNEXPECTED_FRACTION;
-    const fractionDisplay = display(PARAM_NAME, fractionErrorMessage);
+export function validateNumPeriods(periods: number, isPeriodsPerYear: boolean = false, logging: boolean = false): void {
+    let PARAM_NAME = "number of periods";
+    if (isPeriodsPerYear) {
+        PARAM_NAME += " per year";
+    }
+    const fractionErrorMessage = ERROR_MESSAGES.ERROR_MESSAGES.UNEXPECTED_FRACTION;
+    const fractionDisplay = ErrorStringHandling.displayError(PARAM_NAME, fractionErrorMessage);
 
-    negativeError(PARAM_NAME, periods, logging);
+    negativeError(PARAM_NAME, periods, logging); // Error for negative periods
+
     if (!Number.isInteger(periods)) {
-        throw new validationFailure(fractionDisplay, logging);
+        throw new ValidateError.ValidationError(fractionDisplay, logging);
     }
 }
-module.exports.validateNumPeriods = validateNumPeriods;
 
 /**
  * Validate a currency amount.
@@ -104,7 +104,7 @@ module.exports.validateNumPeriods = validateNumPeriods;
  * validateAmount(0); // Throws ValidationError
  * validateAmount(-2.5); // Throws ValidationError
  */
-function validateAmount(amount: number, logging: boolean = false): void {
+export function validateAmount(amount: number, logging: boolean = false): void {
     negativeError("amount", amount, logging);
 }
-module.exports.validateAmount = validateAmount;
+}

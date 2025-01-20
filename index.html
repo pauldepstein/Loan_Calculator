@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loan Calculator</title>
+    <!-- Link to the CSS file in the src/frontend folder -->
+    <link rel="stylesheet" href="src/frontend/styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <h1>Loan Calculator</h1>
+        <form id="loanForm">
+            <label for="loanAmount">Loan Amount:</label>
+            <input type="text" id="loanAmount" name="loanAmount" placeholder="Enter amount" required>
+            
+            <label for="interestRate">Interest Rate (%):</label>
+            <input type="text" id="interestRate" name="interestRate" placeholder="Enter rate" required>
+            
+            <label for="loanTerm">Loan Term (years):</label>
+            <input type="text" id="loanTerm" name="loanTerm" placeholder="Enter years" required>
+            
+            <button type="submit">Calculate</button>
+        </form>
+        
+        <div id="result">
+            <h2>Monthly Payment: <span id="monthlyPayment"></span></h2>
+        </div>
+    </div>
+
+    <script>
+        // Simple JavaScript to handle the loan calculation
+        document.getElementById("loanForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Below is dummy result to test the display functionality.
+            document.getElementById("monthlyPayment").textContent = 2;
+
+            
+        });
+    </script>
+</body>
+</html>

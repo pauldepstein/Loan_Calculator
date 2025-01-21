@@ -5,11 +5,11 @@
 
 // Interest rate tests
 try {
-  console.log('Testing valid interest rate:');
+  console.log('Testing valid interest rate -- 5:');
   ParameterValidators.validateInterestRate(5);
-  console.log('Valid rate passed successfully!');
+  console.log('Valid rate of passed successfully!');
 
-  console.log('Testing negative interest rate:');
+  console.log('Testing negative interest rate of -1:');
   ParameterValidators.validateInterestRate(-1);
 } catch (error: any) {
   if (error instanceof ValidateError.ValidationError) {
@@ -41,11 +41,11 @@ try {
 
 // Number of periods tests
 try {
-  console.log('Testing valid number of periods:');
+  console.log('Testing valid number of periods -- 5:');
   ParameterValidators.validateNumPeriods(5);
   console.log('Valid number of periods passed successfully!');
 
-  console.log('Testing negative number of periods:');
+  console.log('Testing negative number of periods (-1):');
   ParameterValidators.validateNumPeriods(-1);
 } catch (error: any) {
   if (error instanceof ValidateError.ValidationError) {
@@ -57,7 +57,7 @@ try {
 }
 
 try {
-  console.log('Testing fractional number of periods:');
+  console.log('Testing fractional number of periods (2.5):');
   ParameterValidators.validateNumPeriods(2.5);
 } catch (error: any) {
   if (error instanceof ValidateError.ValidationError) {
@@ -69,7 +69,7 @@ try {
 
 // Amount tests
 try {
-  console.log('Testing that amount is positive:');
+  console.log('Testing that amount of 5.5 is positive:');
   ParameterValidators.validateAmount(5.5);
   console.log('Valid amount passed successfully!');
 
@@ -85,7 +85,7 @@ try {
 }
 
 try {
-  console.log('Testing for negative sums:');
+  console.log('Testing for negative sum of -2.5:');
   ParameterValidators.validateAmount(-2.5);
 } catch (error: any) {
   if (error instanceof ValidateError.ValidationError) {

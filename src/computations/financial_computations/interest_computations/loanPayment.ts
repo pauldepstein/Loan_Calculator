@@ -1,4 +1,6 @@
+// Dependencies
 /// <reference path="ratePerPeriod.ts" />
+/// <reference path = "../../../constants.ts" />
 
 /**
  * @file Functions for calculating loan payments.

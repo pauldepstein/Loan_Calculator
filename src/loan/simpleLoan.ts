@@ -2,6 +2,7 @@
 // Dependencies
 /// <reference path="../exceptions/parameterValidators.ts" />
 /// <reference path="loan.ts" />
+/// <reference path = "../computations/financial_computations/interest_computations/loanPayment.ts" />
 
 namespace LoanSimple{
 // A class for the simplest loan possible -- a constant payment each period with no down payment

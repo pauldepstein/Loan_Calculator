@@ -1,7 +1,6 @@
 // Purpose: ad hoc testing of the class representing a simple monthly loan.
 
 // Dependencies
-// Dependencies
 /// <reference path="../../loan/simpleLoan.ts" />
 
 const success = 'The test passed successfully!';

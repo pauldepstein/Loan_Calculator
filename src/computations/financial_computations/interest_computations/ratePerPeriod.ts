@@ -1,5 +1,8 @@
 // Calculate the interest rate per period
 
+// Dependency
+/// <reference path = "../../../constants.ts" />
+
 namespace RatePerPeriod{
 /**
  * Function to calculate the rate per period, given the annual interest rate and the number of periods per year.

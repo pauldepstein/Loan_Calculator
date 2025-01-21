@@ -1,3 +1,5 @@
+// Dependency
+/// <reference path="../exceptions/parameterValidators.ts" />
 namespace LoanBase {
 // An abstract base class for all types of loans
 /// <reference path="../exceptions/parameterValidators.ts" />

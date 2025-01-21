@@ -11,6 +11,7 @@
  */
 
 // Dependencies
+/// <reference path="errorMessages.ts" />
 /// <reference path="errorStringHandling.ts" />
 /// <reference path="validationError.ts" />
 

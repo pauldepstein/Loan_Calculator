@@ -1,3 +1,9 @@
+<!-- Dependencies -->
+<script src = "dist/constants.js"></script>
+<script src = "dist/computations/financial_computations/interest_computations/loanPayment.js"></script>
+<script src = "dist/computations/financial_computations/interest_computations/ratePerPeriod.js"></script>
+<script src = "src/loan/simpleLoan.js"></script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +18,14 @@
     <div class="calculator">
         <h1>Loan Calculator</h1>
         <form id="loanForm">
-            <label for="loanAmount">Loan Amount:</label>
-            <input type="text" id="loanAmount" name="loanAmount" placeholder="Enter amount" required>
+            <label for="loanAmount">Loan Amount (dollars):</label>
+            <input type="text" id="loanAmount" name="loanAmount" placeholder="10000" required>
             
             <label for="interestRate">Interest Rate (%):</label>
-            <input type="text" id="interestRate" name="interestRate" placeholder="Enter rate" required>
+            <input type="text" id="interestRate" name="interestRate" placeholder="5" required>
             
             <label for="loanTerm">Loan Term (years):</label>
-            <input type="text" id="loanTerm" name="loanTerm" placeholder="Enter years" required>
+            <input type="text" id="loanTerm" name="Number of payments" placeholder="12" required>
             
             <button type="submit">Calculate</button>
         </form>
@@ -30,12 +36,16 @@
     </div>
 
     <script>
-        // Simple JavaScript to handle the loan calculation
+        // The payment calculations
+        let loan = new SimpleLoan(0, 3, 1000)
+        let result = loan.calculatePayment();
+        
+        // The front end
         document.getElementById("loanForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
             // Below is dummy result to test the display functionality.
-            document.getElementById("monthlyPayment").textContent = 2;
+            document.getElementById("monthlyPayment").textContent = result;
 
             
         });

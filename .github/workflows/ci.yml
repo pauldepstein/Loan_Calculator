@@ -17,11 +17,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     
-    # Set up Node.js (specify the version you're using)
+    # Set up Node.js 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'  # or '14', depending on which version you're using
+        node-version: '16'  
     
     # Install dependencies
     - name: Install dependencies
@@ -29,7 +29,7 @@ jobs:
     
     # Compile TypeScript files
     - name: Compile TypeScript
-      run: npx tsc  # This will compile your TypeScript files to JavaScript
+      run: npx tsc  
     
     # Run the tests
     - name: Run tests

@@ -19,13 +19,13 @@
         <h1>Loan Calculator</h1>
         <form id="loanForm">
             <label for="loanAmount">Loan Amount (dollars):</label>
-            <input type="text" id="loanAmount" name="loanAmount" placeholder="10000" required>
+            <input type="text" id="loanAmount" name="loanAmount" placeholder="10000" value="10000" required>
             
             <label for="interestRate">Annual Interest Rate (%):</label>
-            <input type="text" id="interestRate" name="interestRate" placeholder="5" required>
+            <input type="text" id="interestRate" name="interestRate" placeholder="5" value="5" required>
             
-            <label for="loanTerm">Number of monthly payments:</label>
-            <input type="text" id="loanTerm" name="Number of payments" placeholder="24" required>
+            <label for="numPayments">Number of monthly payments:</label>
+            <input type="text" id="numPayments" name="Number of payments" placeholder="24" value="24" required>
             
             <button type="submit">Calculate</button>
         </form>
@@ -36,19 +36,23 @@
     </div>
 
     <script>
-        // The payment calculations
-        let loan = new SimpleLoan(0, 3, 1000)
-        let result = loan.calculatePayment();
         
-        // The front end
         document.getElementById("loanForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
-            // Below is dummy result to test the display functionality.
-            document.getElementById("monthlyPayment").textContent = result;
+        // Retrieve user input
+        const loanAmount = parseFloat(document.getElementById("loanAmount").value);
+        const interestRate = parseFloat(document.getElementById("interestRate").value) / 100; // Convert percentage to decimal
+        const numPayments = parseInt(document.getElementById("numPayments").value);
+        
+        // The payment calculations
+        const loan = new SimpleLoan(interestRate, loanAmount, numPayments);
+        const result = loan.calculatePayment();
 
-            
+        // Final display
+        document.getElementById("monthlyPayment").textContent = result;
         });
+
     </script>
 </body>
 </html>

@@ -1,37 +1,36 @@
-name: CI Pipeline
+name: Node.js CI
 
 on:
   push:
-    branches:
+    branches: 
       - main
   pull_request:
     branches:
       - main
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-
+    
     steps:
-    # Step 1: Checkout the code from the repository
+    # Check out the code
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    # Step 2: Set up Node.js with our chosen version
+    
+    # Set up Node.js (specify the version you're using)
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 16 # Our chosen Node.js version, based on documentation of Github Action
-        cache: 'npm' # Cache dependencies to improve performance
-
-    # Step 3: Install dependencies
+        node-version: '16'  # or '14', depending on which version you're using
+    
+    # Install dependencies
     - name: Install dependencies
       run: npm install
-
-    # Step 4: Run tests
+    
+    # Compile TypeScript files
+    - name: Compile TypeScript
+      run: npx tsc  # This will compile your TypeScript files to JavaScript
+    
+    # Run the tests
     - name: Run tests
       run: npm test
-
-    # Step 5: Build the project
-    - name: Build project
-      run: npm run build

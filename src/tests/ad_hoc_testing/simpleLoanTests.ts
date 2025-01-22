@@ -1,7 +1,13 @@
 // Purpose: ad hoc testing of the class representing a simple monthly loan.
 
 // Dependencies
+/// <reference path = "../../constants.ts" />
+/// <reference path="../../loan/loan.ts" />
 /// <reference path="../../loan/simpleLoan.ts" />
+/// <reference path="../../exceptions/parameterValidators.ts" />
+/// <reference path="../../exceptions/validationError.ts" />
+/// <reference path="../../exceptions/errorMessages.ts" />
+/// <reference path="../../exceptions/errorStringHandling.ts" />
 
 const success = 'The test passed successfully!';
 const failure = 'The test failed!';
@@ -31,7 +37,7 @@ try {
     {
       console.log('Testing an exceptions case with a negative amount of money (-5000):');
       const simpleLoan = new LoanSimple.SimpleLoan(0.1, -5000, 12) // Construct an invalid loan which throws an exception 
-      const result = simpleLoan.calculatePayment(); // Exception stops this being thrown.
+      const result = simpleLoan.calculatePayment(); // Exception stops this being executed.
       console.log (result) // Doesn't get executed
     }
   

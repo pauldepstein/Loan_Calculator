@@ -2,6 +2,7 @@
 
 // Dependencies
 /// <reference path="../../computations/financial_computations/interest_computations/ratePerPeriod.ts" />
+/// <reference path = "../../constants.ts" />
 
 const successMsg = 'The test passed successfully!';
 const failureMsg = 'The test failed!';

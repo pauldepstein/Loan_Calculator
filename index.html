@@ -44,12 +44,19 @@
         const loanAmount = parseFloat(document.getElementById("loanAmount").value);
         const interestRate = parseFloat(document.getElementById("interestRate").value) / 100; // Convert percentage to decimal
         const numPayments = parseInt(document.getElementById("numPayments").value);
+
+        // Validate user input
+        const errorAmount = isNaN(loanAmount) || loanAmount < 0;
+        const errorInterestRate = isNaN(interestRate) || interestRate < 0;
+        const errorNumPayments = isNaN(numPayments) || numPayments < 1 || !Number.isInteger(numPayments);
+        const error = errorAmount || errorInterestRate || errorNumPayments;
         
         // The payment calculations
         const loan = new SimpleLoan(interestRate, loanAmount, numPayments);
         const result = loan.calculatePayment();
 
         // Final display
+        const display = error ? "Invalid input: please re-enter" : result.toFixed(2)
         document.getElementById("monthlyPayment").textContent = result.toFixed(2);
         });
 

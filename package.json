@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc", 
-    "postbuild": "node -e \"require('fs-extra').copySync('_redirects', 'dist/_redirects'); require('fs-extra').copySync('src/loan/simpleLoan.js', 'dist/loan/simpleLoan.js');\""
+    "postbuild": "node -e \"require('fs-extra').copySync('_redirects', 'dist/_redirects'); require('fs-extra').copySync('src/loan/simpleLoan.js', 'dist/loan/simpleLoan.js'); require('fs-extra').copySync('src/constants.js', 'dist/constants.js'); require('fs-extra').copySync('src/computations/financial_computations/interest_computations/loanPayment.js', 'dist/computations/financial_computations/interest_computations/loanPayment.js'); require('fs-extra').copySync('src/computations/financial_computations/interest_computations/ratePerPeriod.js', 'dist/computations/financial_computations/interest_computations/ratePerPeriod.js');\""
   },
   "keywords": [],
   "author": "",

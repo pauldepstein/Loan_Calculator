@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^22.10.5"
+    "@types/node": "^22.10.5",
+    "typescript": "^4.x.x"
   },
   "dependencies": {
     "fs-extra": "^11.3.0"

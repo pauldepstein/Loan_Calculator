@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node parameterValidationTests.ts",
-    "build": "tsc",  // Compile TypeScript files,
-    "postbuild": "cp _redirects dist/_redirects"  // Copy _redirects to dist folder after build
+    "start": "node parameterValidationTests.js",
+    "build": "tsc", 
+    "postbuild": "cp _redirects dist/_redirects" 
   },
   "keywords": [],
   "author": "",

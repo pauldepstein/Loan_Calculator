@@ -43,7 +43,7 @@
         // Retrieve user input
         const loanAmount = parseFloat(document.getElementById("loanAmount").value);
         const interestRate = parseFloat(document.getElementById("interestRate").value) / 100; // Convert percentage to decimal
-        const numPayments = parseInt(document.getElementById("numPayments").value);
+        const numPayments = parseFloat(document.getElementById("numPayments").value);
 
         // Validate user input
         const errorAmount = isNaN(loanAmount) || loanAmount < 0;

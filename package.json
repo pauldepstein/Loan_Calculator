@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc", 
+    "build": "tsc",
     "postbuild": "node -e \"require('fs-extra').copySync('_redirects', 'dist/_redirects'); require('fs-extra').copySync('src/loan/simpleLoan.js', 'dist/loan/simpleLoan.js'); require('fs-extra').copySync('dist/constants.js', 'dist/constants.js'); require('fs-extra').copySync('dist/computations/financial_computations/interest_computations/loanPayment.js', 'dist/computations/financial_computations/interest_computations/loanPayment.js'); require('fs-extra').copySync('dist/computations/financial_computations/interest_computations/ratePerPeriod.js', 'dist/computations/financial_computations/interest_computations/ratePerPeriod.js');\""
   },
   "keywords": [],
@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^22.10.5",
+    "ts-node": "^10.9.2",
     "typescript": "^4.x.x"
   },
   "dependencies": {

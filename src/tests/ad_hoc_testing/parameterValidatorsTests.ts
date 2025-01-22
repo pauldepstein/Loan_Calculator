@@ -2,6 +2,8 @@
 // Dependencies
 /// <reference path="../../exceptions/parameterValidators.ts" />
 /// <reference path="../../exceptions/validationError.ts" />
+/// <reference path="../../exceptions/errorMessages.ts" />
+/// <reference path="../../exceptions/errorStringHandling.ts" />
 
 // Interest rate tests
 try {

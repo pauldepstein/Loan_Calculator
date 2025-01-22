@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node src/constants.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc", 
-    "postbuild": "node -e \"require('fs-extra').copySync('_redirects', 'dist/_redirects');\""
+    "update-references": "node updateReferences.js", 
+    "postbuild": "node -e \"require('fs-extra').copySync('_redirects', 'dist/_redirects');\" && npm run update-references"
   },
   "keywords": [],
   "author": "",

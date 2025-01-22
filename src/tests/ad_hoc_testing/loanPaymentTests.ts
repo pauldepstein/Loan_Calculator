@@ -1,6 +1,9 @@
 // Purpose: ad hoc testing of the loan payments function for a simple monthly loan.
 // Dependencies
 /// <reference path="../../computations/financial_computations/interest_computations/loanPayment.ts" />
+/// <reference path="../../computations/financial_computations/interest_computations/ratePerPeriod.ts" />
+/// <reference path = "../../constants.ts" />
+
 // Test cases
 const successMessage = 'Test passed';
 const failureMessage = 'Test failed';

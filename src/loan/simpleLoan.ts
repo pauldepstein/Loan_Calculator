@@ -1,8 +1,13 @@
 // File for the class of the simplest loan possible -- a constant payment each period with no down payment.
 // Dependencies
+/// <reference path="../constants.ts" />
+/// <reference path="../exceptions/validationError.ts" />
 /// <reference path="../exceptions/parameterValidators.ts" />
+/// <reference path="../exceptions/errorMessages.ts" />
+/// <reference path="../exceptions/errorStringHandling.ts" />
 /// <reference path="loan.ts" />
 /// <reference path = "../computations/financial_computations/interest_computations/loanPayment.ts" />
+/// <reference path = "../computations/financial_computations/interest_computations/ratePerPeriod.ts" />
 
 namespace LoanSimple{
 // A class for the simplest loan possible -- a constant payment each period with no down payment

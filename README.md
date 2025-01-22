@@ -17,8 +17,9 @@ User instructions for all modes will be given below.
 2) Fill in the loan amount with a positive sum of money.  
 3) Fill in the annual interest rate in % -- this can not be negative but 0 interest is permitted.  
 4) Fill in the number of monthly payments (a positive whole number).  
-5) Observe the result which is the fair monthly payment that results, assuming that interest is continuously compounded.  
-6) If the user breaches any of the criteria given in 2) to 4), an error message is displayed.  
+5) Press the **Calculate** button.
+6) Observe the result which is the fair monthly payment that results, assuming that interest is continuously compounded.
+7) If the user breaches any of the criteria given in 2) to 4), an error message is displayed.  
 
 ## Frontend dev user mode 
 1) Check that git is installed.  

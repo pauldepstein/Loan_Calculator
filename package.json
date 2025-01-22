@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run copy-index && npm run copy-simpleloan && tsc", 
     "copy-index": "cp src/index.html dist/index.html",
-    "copy-simpleloan": "cp src/simpleLoan.js dist/simpleLoan.js"
+    "copy-simpleloan": "cp src/simpleLoan.js dist/simpleLoan.js",
     "update-references": "node updateReferences.js", 
     "postbuild": "node -e \"require('fs-extra').copySync('_redirects', 'dist/_redirects');\" && npm run update-references"
   },

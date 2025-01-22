@@ -1,8 +1,8 @@
 <!-- Dependencies -->
-<script src = "dist/constants.js"></script>
-<script src = "dist/computations/financial_computations/interest_computations/loanPayment.js"></script>
-<script src = "dist/computations/financial_computations/interest_computations/ratePerPeriod.js"></script>
-<script src = "dist/loan/simpleLoan.js"></script>
+<script src = "constants.js"></script>
+<script src = "computations/financial_computations/interest_computations/loanPayment.js"></script>
+<script src = "computations/financial_computations/interest_computations/ratePerPeriod.js"></script>
+<script src = "loan/simpleLoan.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +50,7 @@
         const result = loan.calculatePayment();
 
         // Final display
-        document.getElementById("monthlyPayment").textContent = result;
+        document.getElementById("monthlyPayment").textContent = result.toFixed(2);
         });
 
     </script>

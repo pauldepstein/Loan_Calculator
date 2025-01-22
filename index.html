@@ -46,7 +46,7 @@
         const numPayments = parseFloat(document.getElementById("numPayments").value);
 
         // Validate user input
-        const errorAmount = isNaN(loanAmount) || loanAmount < 0;
+        const errorAmount = isNaN(loanAmount) || loanAmount <= 0;
         const errorInterestRate = isNaN(interestRate) || interestRate < 0;
         const errorNumPayments = isNaN(numPayments) || numPayments < 1 || !Number.isInteger(numPayments);
         const error = errorAmount || errorInterestRate || errorNumPayments;

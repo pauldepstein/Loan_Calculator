@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node src/constants.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run copy-index && npm run copy-simpleloan && tsc", 
+    "build": "mkdir -p dist && npm run copy-index && npm run copy-simpleloan && tsc", 
     "copy-index": "cp index.html dist/index.html",
     "copy-simpleloan": "cp src/simpleLoan.js dist/simpleLoan.js",
     "update-references": "node updateReferences.js", 

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node parameterValidationTests.js",
     "build": "tsc", 
-    "postbuild": "npx cp -r _redirects dist/_redirects"
+    "postbuild": "node -e \"require('fs-extra').copySync('_redirects', 'dist/_redirects')\"" 
   },
   "keywords": [],
   "author": "",
